@@ -24,6 +24,9 @@
 5 10 5
 3 5 6
 2 7 3
+2 10
+5 9 2
+1 7 3
 
 样本输出
 5
@@ -37,8 +40,8 @@ while True:
     S = []
     for i in range(N):
         p, q, v = (int(i) for i in input().split())
-        S.append((q, p, v))
-    Q, P, V = zip(*sorted(S))
+        S.append((p, q, v))
+    P, Q, V = zip(*sorted(S, key=lambda x: x[1] - x[0]))
 
     dp = [0] * (M + 1)
     for i in range(len(P)):
@@ -47,3 +50,4 @@ while True:
 
     print('输出:')
     print(dp[M])
+    print(dp)
